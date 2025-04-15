@@ -46,6 +46,9 @@
   ..args,
   it,
 ) = {
+  pagebreak(weak: true, to: if twoside { "odd" })
+  counter(page).update(1)
+
   // 0.  标志前言结束
   set page(numbering: "1")
 
@@ -170,14 +173,6 @@
       }
     )
   }))
-  context {
-      if calc.even(here().page()){
-        set page(numbering: "I",header: none)
-        // counter(page).update(1)
-        pagebreak() + " "
-    }
-  }
-  counter(page).update(1)
 
   head(
     anonymous: anonymous,
