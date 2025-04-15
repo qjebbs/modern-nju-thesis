@@ -1,12 +1,12 @@
 [package]
-name = "modern-nju-thesis"
+name = "simple-thesis"
 version = "0.4.0"
 entrypoint = "lib.typ"
-authors = ["OrangeX4"]
+authors = ["OrangeX4", "Jebbs"]
 license = "MIT"
-description = "南京大学学位论文模板。Modern Nanjing University Thesis."
-repository = "https://github.com/nju-lug/modern-nju-thesis"
-keywords = ["Nanjing University", "thesis"]
+description = "适用于日常交流的简易论文模板。Simple Thesis for daily usage."
+repository = "https://github.com/qjebbs/simple-thesis"
+keywords = ["daily usage", "thesis"]
 categories = ["thesis"]
 exclude = ["imgs"]
 compiler = "0.13.0"

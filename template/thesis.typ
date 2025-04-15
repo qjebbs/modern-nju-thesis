@@ -1,84 +1,49 @@
-#import "@preview/modern-nju-thesis:0.4.0": documentclass
+// #import "@preview/simple-thesis:0.4.0": documentclass
+#import "../lib.typ": documentclass
 
-// 你首先应该安装 https://github.com/nju-lug/modern-nju-thesis/tree/main/fonts/FangZheng 里的所有字体，
+// 你首先应该安装 https://github.com/qjebbbs/simple-thesis/tree/main/fonts/FangZheng 里的所有字体，
 // 如果是 Web App 上编辑，你应该手动上传这些字体文件，否则不能正常使用「楷体」和「仿宋」，导致显示错误。
 
 #let (
   // 布局函数
   twoside, doc, preface, mainmatter, appendix,
   // 页面函数
-  fonts-display-page, cover, decl-page, abstract, abstract-en, bilingual-bibliography,
+  fonts-display-page, abstract, bilingual-bibliography,
   outline-page, list-of-figures, list-of-tables, notation, acknowledgement,
 ) = documentclass(
-  // degree: "academic",  // "academic" | "professional", 学位类型，默认为学术型 academic
-  // anonymous: true,  // 盲审模式
+  // anonymous: true,  // 匿名模式
   twoside: true,  // 双面模式，会加入空白页，便于打印
-  // 你会发现 Typst 有许多警告，这是因为 modern-nju-thesis 加入了很多不必要的 fallback 字体
+  // 你会发现 Typst 有许多警告，这是因为 simple-thesis 加入了很多不必要的 fallback 字体
   // 你可以自定义字体消除警告，先英文字体后中文字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
   // fonts: (楷体: (name: "Times New Roman", covers: "latin-in-cjk"), "FZKai-Z03S")),
   info: (
-    title: ("基于 Typst 的", "南京大学学位论文"),
-    title-en: "My Title in English",
-    grade: "20XX",
-    student-id: "1234567890",
-    author: "张三",
-    author-en: "Ming Xing",
-    department: "某学院",
-    department-en: "School of Chemistry and Chemical Engineering",
-    major: "某专业",
-    major-en: "Chemistry",
-    supervisor: ("李四", "教授"),
-    supervisor-en: "Professor My Supervisor",
-    // supervisor-ii: ("王五", "副教授"),
-    // supervisor-ii-en: "Professor My Supervisor",
-    submit-date: datetime.today(),
+    title: "适用于日常交流的简易论文模板",
+    authors: (
+      ("张三", "13333333333", "alice@example.org"),
+      ("李四", "14444444444", "bob@example.org"),
+      ("王五", "15555555555", "charly@example.org"),
+    ),
   ),
   // 参考文献源
   bibliography: bibliography.with("ref.bib"),
 )
+#show: doc // 文稿设置
 
-// 文稿设置
-#show: doc
+// #fonts-display-page() // 字体展示测试页
 
-// 字体展示测试页
-// #fonts-display-page()
+// #show: preface // 前言
+// #outline-page() // 目录
+// #list-of-figures() // 插图目录
+// #list-of-tables() // 表格目录
 
-// 封面页
-#cover()
-
-// 声明页
-#decl-page()
-
-
-// 前言
-#show: preface
+#show: mainmatter // 标题与正文
 
 // 中文摘要
 #abstract(
-  keywords: ("我", "就是", "测试用", "关键词")
+  keywords: ("我", "就是", "测试", "关键词")
 )[
   中文摘要
 ]
-
-// 英文摘要
-#abstract-en(
-  keywords: ("Dummy", "Keywords", "Here", "It Is")
-)[
-  English abstract
-]
-
-
-// 目录
-#outline-page()
-
-// 插图目录
-// #list-of-figures()
-
-// 表格目录
-// #list-of-tables()
-
-// 正文
-#show: mainmatter
 
 // 符号表
 // #notation[
