@@ -5,19 +5,17 @@
   // 其他参数
   fallback: false,  // 字体缺失时使用 fallback，不显示豆腐块
   lang: "zh",
-  margin: (x: 89pt),
+  margin: (left:2.5cm, right:2cm, top:2.5cm, bottom:3.5cm,),
   it,
 ) = {
   // 1.  默认参数
   info = (
-    title: ("基于 Typst 的", "南京大学学位论文"),
-    author: "张三",
+    authors: (
+      ("张三",),
+    ),
   ) + info
-
-  // 2.  对参数进行处理
-  // 2.1 如果是字符串，则使用换行符将标题分隔为列表
-  if type(info.title) == str {
-    info.title = info.title.split("\n")
+  if info.title == "" {
+    info.title = "适用于日常交流的简易论文模板"
   }
 
   // 3.  基本的样式设置
@@ -25,9 +23,15 @@
   set page(margin: margin)
 
   // 4.  PDF 元信息
+  let authors = ()
+  for a in info.authors {
+    if a.len() > 0 {
+      authors = authors + (a.first(),)
+    }
+  }
   set document(
-    title: (("",)+ info.title).sum(),
-    author: info.author,
+    title: info.title,
+    author: authors,
   )
 
   it

@@ -3,27 +3,30 @@
 #import "../utils/custom-numbering.typ": custom-numbering
 #import "../utils/custom-heading.typ": heading-display, active-heading, current-heading
 #import "../utils/unpairs.typ": unpairs
+#import "../pages/head.typ": head
 
 #let mainmatter(
   // documentclass 传入参数
   twoside: false,
+  anonymous: false,
+  info: (:),
   fonts: (:),
   // 其他参数
   leading: 1.5 * 15.6pt - 0.7em,
   spacing: 1.5 * 15.6pt - 0.7em,
   justify: true,
   first-line-indent: (amount: 2em, all: true),
-  numbering: custom-numbering.with(first-level: "第一章 ", depth: 4, "1.1 "),
+  numbering: custom-numbering.with(first-level: "1 ", depth: 4, "1.1 "),
   // 正文字体与字号参数
   text-args: auto,
   // 标题字体与字号
   heading-font: auto,
-  heading-size: (字号.四号,),
-  heading-weight: ("regular",),
+  heading-size: (字号.三号,字号.小三,字号.四号,字号.小四,),
+  heading-weight: ("bold",),
   heading-above: (2 * 15.6pt - 0.7em, 2 * 15.6pt - 0.7em),
   heading-below: (2 * 15.6pt - 0.7em, 1.5 * 15.6pt - 0.7em),
-  heading-pagebreak: (true, false),
-  heading-align: (center, auto),
+  heading-pagebreak: (false, false),
+  heading-align: (left, auto),
   // 页眉
   header-render: auto,
   header-vspace: 0em,
@@ -49,11 +52,11 @@
   // 1.  默认参数
   fonts = 字体 + fonts
   if text-args == auto {
-    text-args = (font: fonts.宋体, size: 字号.小四)
+    text-args = (font: ("Times New Roman", "SimSun", ..fonts.宋体), size: 字号.小四)
   }
   // 1.1 字体与字号
   if heading-font == auto {
-    heading-font = (fonts.黑体,)
+    heading-font = (("Times New Roman", "SimSun", ..fonts.黑体),)
   }
   // 1.2 处理 heading- 开头的其他参数
   let heading-text-args-lists = args.named().pairs()
@@ -168,13 +171,18 @@
     )
   }))
   context {
-  if calc.even(here().page()){
-    set page(numbering: "I",header: none)
-    // counter(page).update(1)
-  pagebreak() + " "
-}
-}
+      if calc.even(here().page()){
+        set page(numbering: "I",header: none)
+        // counter(page).update(1)
+        pagebreak() + " "
+    }
+  }
   counter(page).update(1)
+
+  head(
+    anonymous: anonymous,
+    info: info,
+  )
 
   it
 }
