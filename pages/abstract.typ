@@ -1,4 +1,3 @@
-#import "../utils/custom-cuti.typ": fakebold
 #import "../utils/style.typ": 字号, 字体
 #import "../utils/double-underline.typ": double-underline
 #import "../utils/invisible-heading.typ": invisible-heading
@@ -40,16 +39,24 @@
 
     #{
       set par(first-line-indent: 0pt)
-      set text(font:字体.黑体,size: 字号.四号)
-      fakebold("摘　要：")
-      set text(font:字体.宋体,size: 字号.四号)
-      body
+      {
+        set text(font:字体.黑体, size: 字号.四号, weight: "bold")
+        "摘　要："
+      }
+      {
+        set text(font:字体.宋体, size: 字号.四号)
+        body
+      }
     }
 
-    #if keywords.len() > 0 [
-      #set par(first-line-indent: 0pt)
-      #fakebold(text(font: 字体.黑体, size: 字号.四号,"关键词："))#(("",)+ keywords.intersperse("；")).sum()
-    ]
+    #if keywords.len() > 0 {
+      set par(first-line-indent: 0pt)
+      {
+        set text(font: 字体.黑体, size: 字号.四号, weight: "bold")
+        [关键词：]
+      }
+      (("",)+ keywords.intersperse("；")).sum()
+    }
     #v(1em)
   ]
 }

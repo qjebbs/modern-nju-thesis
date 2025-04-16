@@ -1,4 +1,3 @@
-#import "../utils/custom-cuti.typ": fakebold
 #import "../utils/style.typ": 字号, 字体
 
 // 文稿设置，可以进行一些像页面边距这类的全局设置
@@ -21,8 +20,8 @@
   }
 
   align(center)[
-    #set text(font:字体.黑体, size: 字号.小二)
-    #fakebold(info.title)
+    #set text(font:字体.黑体, size: 字号.小二, weight: "bold")
+    #info.title
   ]
   if info.authors.len()>0 and not anonymous {
     // v(1em)
