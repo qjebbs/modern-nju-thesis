@@ -16,6 +16,19 @@ git clone https://github.com/qjebbs/simple-thesis lib
 
 导入即可。
 
+### 为什么图表的引用结果与展示不一致？
+
+这是因为本模板引入了 `@preview/i-figured` 库，
+引用时必须加上标签前缀 `fig:`, `tbl:`, 或 `lst:`，这是其特有的行为。
+
+```typst
+应使用 `@fig:example` 引用为“图1.1”，若通过 `@example` 引用则显示为“图1”
+#figure(
+  caption: [Example],
+  [img]
+) <example>
+```
+
 ### 为什么我的字体没有显示出来，而是一个个「豆腐块」？
 
 这是因为本地没有对应的字体，**这种情况经常发生在 MacOS 的「楷体」显示上**。
