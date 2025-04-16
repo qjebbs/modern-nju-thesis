@@ -5,8 +5,10 @@
   // documentclass 传入参数
   anonymous: false,
   info: (:),
+  fonts: (:),
 ) = {
   // 1.  默认参数
+  fonts = 字体 + fonts
   info = (
     authors: (
       ("张三",),
@@ -20,13 +22,13 @@
   }
 
   align(center)[
-    #set text(font:字体.黑体, size: 字号.小二, weight: "bold")
+    #set text(font: fonts.黑体, size: 字号.小二, weight: "bold")
     #info.title
   ]
   if info.authors.len()>0 and not anonymous {
     // v(1em)
     set par(leading: 0.5em)
-    set text(font:字体.宋体,size: 字号.小五)
+    set text(font: fonts.宋体, size: 字号.小五)
     align(center)[#{
       if info.authors.len() == 1 {
         let person = info.authors.last()

@@ -40,11 +40,11 @@
     #{
       set par(first-line-indent: 0pt)
       {
-        set text(font:字体.黑体, size: 字号.四号, weight: "bold")
+        set text(font:fonts.黑体, size: 字号.四号, weight: "bold")
         "摘　要："
       }
       {
-        set text(font:字体.宋体, size: 字号.四号)
+        set text(font:fonts.宋体, size: 字号.四号)
         body
       }
     }
@@ -52,7 +52,7 @@
     #if keywords.len() > 0 {
       set par(first-line-indent: 0pt)
       {
-        set text(font: 字体.黑体, size: 字号.四号, weight: "bold")
+        set text(font: fonts.黑体, size: 字号.四号, weight: "bold")
         [关键词：]
       }
       (("",)+ keywords.intersperse("；")).sum()

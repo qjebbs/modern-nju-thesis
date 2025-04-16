@@ -3,7 +3,6 @@
 #import "layouts/mainmatter.typ": mainmatter
 #import "layouts/appendix.typ": appendix
 #import "pages/fonts-display-page.typ": fonts-display-page
-#import "pages/head.typ": head
 #import "pages/abstract.typ": abstract
 #import "pages/bachelor-outline-page.typ": bachelor-outline-page
 #import "pages/list-of-figures.typ": list-of-figures
@@ -21,7 +20,7 @@
 // 使用函数闭包特性，通过 `documentclass` 函数类进行全局信息配置，然后暴露出拥有了全局配置的、具体的 `layouts` 和 `templates` 内部函数。
 #let documentclass(
   twoside: false,  // 双面模式，会加入空白页，便于打印
-  anonymous: false,  // 盲审模式
+  anonymous: false,  // 匿名模式
   bibliography: none,  // 原来的参考文献函数
   fonts: (:),  // 字体，应传入「宋体」、「黑体」、「楷体」、「仿宋」、「等宽」
   info: (:),

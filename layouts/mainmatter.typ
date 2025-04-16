@@ -55,11 +55,13 @@
   // 1.  默认参数
   fonts = 字体 + fonts
   if text-args == auto {
-    text-args = (font: ("Times New Roman", "SimSun", ..fonts.宋体), size: 字号.小四)
+    text-args = (font: fonts.宋体, size: 字号.小四)
   }
   // 1.1 字体与字号
   if heading-font == auto {
-    heading-font = (("Times New Roman", "SimSun", ..fonts.黑体),)
+    heading-font = (
+      fonts.黑体,
+    )
   }
   // 1.2 处理 heading- 开头的其他参数
   let heading-text-args-lists = args.named().pairs()
@@ -177,6 +179,7 @@
   head(
     anonymous: anonymous,
     info: info,
+    fonts: fonts,
   )
 
   it
