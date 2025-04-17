@@ -53,8 +53,5 @@
   // 显示目录
   i-figured.outline(target-kind: table, title: none)
 
-  // 手动分页
-  if twoside {
-    pagebreak() + " "
-  }
+  pagebreak(weak: true, to: if twoside { "odd" })
 }

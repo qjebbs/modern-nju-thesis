@@ -156,9 +156,7 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 
 
 // 手动分页
-#if twoside {
-  pagebreak() + " "
-}
+#pagebreak(weak: true, to: if twoside { "odd" })
 
 // 中英双语参考文献
 // 默认使用 gb-7714-2015-numeric 样式
@@ -170,9 +168,8 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 ]
 
 // 手动分页
-#if twoside {
-  pagebreak() + " "
-}
+#pagebreak(weak: true, to: if twoside { "odd" })
+
 
 
 // 附录
