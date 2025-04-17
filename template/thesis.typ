@@ -9,7 +9,7 @@
   twoside, doc, preface, mainmatter, appendix,
   // 页面函数
   fonts-display-page, abstract, bilingual-bibliography,
-  outline-page, list-of-figures, list-of-tables, notation, acknowledgement,
+  outline-page, list-of-figures, list-of-tables, acknowledgement,
 ) = documentclass(
   // anonymous: true,  // 匿名模式
   twoside: true,  // 双面模式，会加入空白页，便于打印

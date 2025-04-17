@@ -7,7 +7,6 @@
 #import "pages/bachelor-outline-page.typ": bachelor-outline-page
 #import "pages/list-of-figures.typ": list-of-figures
 #import "pages/list-of-tables.typ": list-of-tables
-#import "pages/notation.typ": notation
 #import "pages/acknowledgement.typ": acknowledgement
 #import "utils/bilingual-bibliography.typ": bilingual-bibliography
 #import "utils/custom-numbering.typ": custom-numbering
@@ -110,14 +109,6 @@
         twoside: twoside,
         ..args,
         fonts: fonts + args.named().at("fonts", default: (:)),
-      )
-    },
-
-    // 符号表页
-    notation: (..args) => {
-      notation(
-        twoside: twoside,
-        ..args,
       )
     },
 
